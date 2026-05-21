@@ -44,3 +44,6 @@ DerivedData/
 
 # --- Claude Code workspace ---
 .claude/
+
+# --- Design handoff materials (kept local, not shipped) ---
+design_handoff_rideStory_revamp/
