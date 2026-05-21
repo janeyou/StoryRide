@@ -115,6 +115,23 @@ class AudioPlayerService: ObservableObject {
         if isPlaying { pause() } else { play() }
     }
 
+    /// Stop playback and clear all in-memory player state. Used on Dropbox disconnect.
+    func reset() {
+        player?.stop()
+        player = nil
+        stopDisplayLink()
+        isPlaying = false
+        currentTime = 0
+        duration = 0
+        currentTitle = ""
+        currentFile = nil
+        currentPlaylistPath = nil
+        loadedFileId = nil
+        queue = []
+        queueIndex = 0
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+    }
+
     func skipForward(_ seconds: TimeInterval = 15) {
         guard let player = player else { return }
         let newTime = min(player.currentTime + seconds, player.duration)

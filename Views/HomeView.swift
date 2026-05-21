@@ -685,11 +685,11 @@ struct HomeView: View {
     }
 
     private func continueRecord() -> StoryRecord? {
-        if !lastPlayedStoryId.isEmpty,
-           let match = recents.first(where: { $0.dropboxFileId == lastPlayedStoryId }) {
-            return match
-        }
-        return recents.first
+        // Only show "continue" when the user has actually played something in a previous
+        // session. Don't auto-surface an arbitrary recent — that feels like a choice was
+        // already made for them.
+        guard !lastPlayedStoryId.isEmpty else { return nil }
+        return recents.first(where: { $0.dropboxFileId == lastPlayedStoryId })
     }
 
     private func playStory(file: DropboxFile, in folder: StoryFolder) {

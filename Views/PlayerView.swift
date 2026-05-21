@@ -75,34 +75,65 @@ struct PlayerView: View {
             .ignoresSafeArea()
             .allowsHitTesting(false)
 
-            ScrollView {
-                VStack(spacing: 0) {
-                    topChrome
-                        .padding(.horizontal, 16)
-                        .padding(.top, 54)
-
-                    surface(visual: visual)
-                        .padding(.horizontal, 28)
-                        .padding(.top, 24)
-
-                    titleBlock(file: file)
-                        .padding(.horizontal, 28)
-                        .padding(.top, 22)
-
-                    progressBlock
-                        .padding(.horizontal, 28)
-                        .padding(.top, 24)
-
-                    transportRow(accentA: visual.accentA)
-                        .padding(.horizontal, 28)
-                        .padding(.top, 20)
-
-                    captionPill
-                        .padding(.horizontal, 28)
-                        .padding(.top, 24)
-                        .padding(.bottom, 40)
-                }
+            if captionsOpen {
+                expandedCaptionLayout(visual: visual)
+            } else {
+                standardLayout(visual: visual, file: file)
             }
+        }
+        .animation(.easeInOut(duration: 0.22), value: captionsOpen)
+    }
+
+    private func standardLayout(visual: PlaylistVisual, file: DropboxFile) -> some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                topChrome
+                    .padding(.horizontal, 16)
+                    .padding(.top, 54)
+
+                surface(visual: visual)
+                    .padding(.horizontal, 28)
+                    .padding(.top, 24)
+
+                titleBlock(file: file)
+                    .padding(.horizontal, 28)
+                    .padding(.top, 22)
+
+                progressBlock
+                    .padding(.horizontal, 28)
+                    .padding(.top, 24)
+
+                transportRow(accentA: visual.accentA)
+                    .padding(.horizontal, 28)
+                    .padding(.top, 20)
+
+                captionPill
+                    .padding(.horizontal, 28)
+                    .padding(.top, 24)
+                    .padding(.bottom, 40)
+            }
+        }
+    }
+
+    private func expandedCaptionLayout(visual: PlaylistVisual) -> some View {
+        VStack(spacing: 0) {
+            topChrome
+                .padding(.horizontal, 16)
+                .padding(.top, 54)
+
+            captionPanel
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.horizontal, 14)
+                .padding(.top, 18)
+                .padding(.bottom, 14)
+
+            VStack(spacing: 14) {
+                transportRow(accentA: visual.accentA)
+                    .padding(.horizontal, 28)
+                captionPill
+                    .padding(.horizontal, 28)
+            }
+            .padding(.bottom, 32)
         }
     }
 

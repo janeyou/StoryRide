@@ -38,4 +38,14 @@ enum TranscriptStore {
         let data = try JSONEncoder().encode(segments)
         try data.write(to: url(for: hash), options: .atomic)
     }
+
+    /// Delete every cached transcript on disk. Used on Dropbox disconnect.
+    static func clearAll() {
+        let fm = FileManager.default
+        let dir = directory
+        guard let entries = try? fm.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return }
+        for entry in entries {
+            try? fm.removeItem(at: entry)
+        }
+    }
 }

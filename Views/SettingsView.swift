@@ -3,9 +3,12 @@ import SwiftData
 
 struct SettingsView: View {
     @EnvironmentObject var dropboxService: DropboxService
+    @EnvironmentObject var audioPlayer: AudioPlayerService
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \StoryFolder.sortOrder) private var folders: [StoryFolder]
+    @Query private var stories: [StoryRecord]
     @AppStorage("captionFontSize") private var captionFontSize: Double = 48
+    @AppStorage("lastPlayedStoryId") private var lastPlayedStoryId: String = ""
     @State private var showAddFolder = false
     @State private var showDiscover = false
 
@@ -95,8 +98,7 @@ struct SettingsView: View {
                 VStack(spacing: 8) {
                     ForEach(folders) { folder in
                         FolderRow(folder: folder) {
-                            modelContext.delete(folder)
-                            try? modelContext.save()
+                            deleteFolder(folder)
                         }
                     }
                 }
@@ -143,7 +145,7 @@ struct SettingsView: View {
                         .font(Theme.Font.body(15))
                         .foregroundColor(Theme.Color.text)
                 }
-                Button {
+                Button(role: .destructive) {
                     dropboxService.logout()
                 } label: {
                     Text("Disconnect")
@@ -156,6 +158,27 @@ struct SettingsView: View {
             .background(Theme.Color.bgElev)
             .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.card))
         }
+    }
+
+    /// Remove a playlist and any viewing state tied to its stories — so re-adding
+    /// the same folder later starts on a clean slate (no leftover progress / favorites
+    /// from before the removal).
+    private func deleteFolder(_ folder: StoryFolder) {
+        let folderPath = folder.dropboxPath
+
+        if audioPlayer.currentPlaylistPath == folderPath {
+            audioPlayer.reset()
+        }
+
+        for record in stories where record.parentFolderPath == folderPath {
+            if record.dropboxFileId == lastPlayedStoryId {
+                lastPlayedStoryId = ""
+            }
+            modelContext.delete(record)
+        }
+
+        modelContext.delete(folder)
+        try? modelContext.save()
     }
 
     private func sectionLabel(_ text: String) -> some View {
