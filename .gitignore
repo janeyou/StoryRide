@@ -1,27 +1,46 @@
-# Secrets — NEVER commit
+# --- Secrets — never commit ---
 Resources/Secrets.xcconfig
-Resources/Secrets.local.xcconfig
 *.local.xcconfig
 
-# macOS
+# --- macOS ---
 .DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
 
-# Xcode user state
+# --- Xcode: per-user state (commit shared workspace data) ---
 xcuserdata/
 *.xcuserstate
-*.xcuserdatad/
 *.xcscmblueprint
 *.xccheckout
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.moved-aside
 
-# Xcode build / derived data
+# --- Xcode: build outputs ---
 build/
 DerivedData/
 *.xcarchive
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.hmap
+*.app
 
-# Swift Package Manager (resolved per-clone)
+# --- Swift Package Manager (commit Package.resolved for reproducible builds) ---
 .swiftpm/
-StoryRide.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/configuration/
-Package.resolved
+.build/
 
-# Claude Code workspace state
+# --- Editors ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Claude Code workspace ---
 .claude/
