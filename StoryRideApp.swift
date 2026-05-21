@@ -19,12 +19,14 @@ struct StoryRideApp: App {
 
 struct ContentView: View {
     @StateObject private var dropboxService = DropboxService()
+    @StateObject private var audioPlayer = AudioPlayerService()
 
     var body: some View {
         Group {
             if dropboxService.isAuthenticated {
-                LibraryView()
+                HomeView()
                     .environmentObject(dropboxService)
+                    .environmentObject(audioPlayer)
             } else {
                 OnboardingView()
                     .environmentObject(dropboxService)
