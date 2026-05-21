@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2115D5F97D82BA41DA8425AF /* CaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F49DF0002D52F39006B93 /* CaptionView.swift */; };
+		27748BED0BB779868D848236 /* DropboxFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3B7F639B8C658C5E7FA8F /* DropboxFile.swift */; };
+		3AD25D8E428456AE305B6D21 /* TranscriptSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F6D26BF2BE4155A446A9B0 /* TranscriptSegment.swift */; };
+		40965A4A4AB86E6953646F78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C965CD55C9B147ED18EAB297 /* Assets.xcassets */; };
+		4A8A057AFA4071EE733C8379 /* StoryFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B39DCCF9FE0E8FBDC30DEEC /* StoryFolder.swift */; };
+		5B14090BC0653A9A4B18A2DD /* RivieraAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1199072CB11699F5EB6F1C54 /* RivieraAPIClient.swift */; };
+		64837F8B043B63384DEEE7FF /* SwiftyDropbox in Frameworks */ = {isa = PBXBuildFile; productRef = 675743947975872F1BBA5197 /* SwiftyDropbox */; };
+		6A00CB55B349F233A00E1C3D /* StoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325289A454D3581A1C266C7 /* StoryRecord.swift */; };
+		6FBE1589ADF0715CBE89BC3B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DB37A1C36A9F6F570F609 /* PlayerView.swift */; };
+		705AF14471A475B3DBC51AA7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5502B0F90F5BF11DC48C039 /* SettingsView.swift */; };
+		7E29A245672ADBBC220A583E /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0016AA2555320471E61D8B /* AudioPlayerService.swift */; };
+		9245F3C31E1EA72BF37F2A7D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D7B84FF8CC798281C99DAD /* OnboardingView.swift */; };
+		C14D7E899FDDE2387E2374AC /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FE22C62E27DBC9E9F8BE66 /* LibraryView.swift */; };
+		C8BA51E910062BD336FEB702 /* StoryRideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE98F5ED82CC5858965BB1 /* StoryRideApp.swift */; };
+		CBA2DBD2BE27DCDA1EABD206 /* TranscriptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4AF1A6F749CF26D7F2130 /* TranscriptStore.swift */; };
+		DAD01712843E3237B329450C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08851F62EEA9818E2FC041 /* Theme.swift */; };
+		DBD5572DE4871B76E432ABEA /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5931A8CE44D41CC29B3923E /* ControlsView.swift */; };
+		E763DEF87E528E17DD9A987C /* DropboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F1E2F5A081D5D629115E19 /* DropboxService.swift */; };
+		E9AD42AB200F2488D31D64A8 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217BEA7AAC63418BA798072 /* FileCache.swift */; };
+		EB8A4B78EF3992DF698B8E17 /* CaptionSyncEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC024FC271AACDC0EE5225D4 /* CaptionSyncEngine.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1199072CB11699F5EB6F1C54 /* RivieraAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivieraAPIClient.swift; sourceTree = "<group>"; };
+		1D0016AA2555320471E61D8B /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		2A4BCF57F0712994CDB2DB49 /* StoryRide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryRide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33E3B7F639B8C658C5E7FA8F /* DropboxFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxFile.swift; sourceTree = "<group>"; };
+		3FE4AF1A6F749CF26D7F2130 /* TranscriptStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptStore.swift; sourceTree = "<group>"; };
+		51CE98F5ED82CC5858965BB1 /* StoryRideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRideApp.swift; sourceTree = "<group>"; };
+		59F1E2F5A081D5D629115E19 /* DropboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxService.swift; sourceTree = "<group>"; };
+		6325289A454D3581A1C266C7 /* StoryRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRecord.swift; sourceTree = "<group>"; };
+		704DB37A1C36A9F6F570F609 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		71F6D26BF2BE4155A446A9B0 /* TranscriptSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptSegment.swift; sourceTree = "<group>"; };
+		8217BEA7AAC63418BA798072 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		8B39DCCF9FE0E8FBDC30DEEC /* StoryFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryFolder.swift; sourceTree = "<group>"; };
+		97FE22C62E27DBC9E9F8BE66 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		983AF2D0128A6DB0C37D522D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9F08851F62EEA9818E2FC041 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		A5502B0F90F5BF11DC48C039 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A5931A8CE44D41CC29B3923E /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		B7D7B84FF8CC798281C99DAD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BC024FC271AACDC0EE5225D4 /* CaptionSyncEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionSyncEngine.swift; sourceTree = "<group>"; };
+		C965CD55C9B147ED18EAB297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D6CF963D3D31EBEBE28305E5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		E29F49DF0002D52F39006B93 /* CaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B686CDCAF1D9200ABCF6AB51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64837F8B043B63384DEEE7FF /* SwiftyDropbox in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04473DF6569173368130E9C3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1D0016AA2555320471E61D8B /* AudioPlayerService.swift */,
+				BC024FC271AACDC0EE5225D4 /* CaptionSyncEngine.swift */,
+				59F1E2F5A081D5D629115E19 /* DropboxService.swift */,
+				1199072CB11699F5EB6F1C54 /* RivieraAPIClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		366E5A7DE73EE9D6CC0A5B88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				33E3B7F639B8C658C5E7FA8F /* DropboxFile.swift */,
+				8B39DCCF9FE0E8FBDC30DEEC /* StoryFolder.swift */,
+				6325289A454D3581A1C266C7 /* StoryRecord.swift */,
+				71F6D26BF2BE4155A446A9B0 /* TranscriptSegment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5A77309BB24876BADAA4CAC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A4BCF57F0712994CDB2DB49 /* StoryRide.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C2CBB17C20A8CFD03887AD5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C965CD55C9B147ED18EAB297 /* Assets.xcassets */,
+				983AF2D0128A6DB0C37D522D /* Info.plist */,
+				D6CF963D3D31EBEBE28305E5 /* Secrets.xcconfig */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7DC66E867DA78628855F12C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E29F49DF0002D52F39006B93 /* CaptionView.swift */,
+				A5931A8CE44D41CC29B3923E /* ControlsView.swift */,
+				97FE22C62E27DBC9E9F8BE66 /* LibraryView.swift */,
+				B7D7B84FF8CC798281C99DAD /* OnboardingView.swift */,
+				704DB37A1C36A9F6F570F609 /* PlayerView.swift */,
+				A5502B0F90F5BF11DC48C039 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E9D58F3C7AC197B2CB93E7DD = {
+			isa = PBXGroup;
+			children = (
+				51CE98F5ED82CC5858965BB1 /* StoryRideApp.swift */,
+				366E5A7DE73EE9D6CC0A5B88 /* Models */,
+				7C2CBB17C20A8CFD03887AD5 /* Resources */,
+				04473DF6569173368130E9C3 /* Services */,
+				FC966FAE12C874DDDC236795 /* Utilities */,
+				7DC66E867DA78628855F12C5 /* Views */,
+				5A77309BB24876BADAA4CAC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC966FAE12C874DDDC236795 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8217BEA7AAC63418BA798072 /* FileCache.swift */,
+				9F08851F62EEA9818E2FC041 /* Theme.swift */,
+				3FE4AF1A6F749CF26D7F2130 /* TranscriptStore.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D94F6503DA5FCFAB97B44F1E /* StoryRide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63C7499944F026F2A9C45A57 /* Build configuration list for PBXNativeTarget "StoryRide" */;
+			buildPhases = (
+				881164E1CA0FD40DC5416EF3 /* Sources */,
+				F116D46DA91C7CBA70E87B73 /* Resources */,
+				B686CDCAF1D9200ABCF6AB51 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StoryRide;
+			packageProductDependencies = (
+				675743947975872F1BBA5197 /* SwiftyDropbox */,
+			);
+			productName = StoryRide;
+			productReference = 2A4BCF57F0712994CDB2DB49 /* StoryRide.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A679F57ECA6F2260E941E58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					D94F6503DA5FCFAB97B44F1E = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9BA95EB19A98E000AFEFF57C /* Build configuration list for PBXProject "StoryRide" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E9D58F3C7AC197B2CB93E7DD;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2E5B72FB3FD8297B9B8DC730 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D94F6503DA5FCFAB97B44F1E /* StoryRide */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F116D46DA91C7CBA70E87B73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40965A4A4AB86E6953646F78 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		881164E1CA0FD40DC5416EF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E29A245672ADBBC220A583E /* AudioPlayerService.swift in Sources */,
+				EB8A4B78EF3992DF698B8E17 /* CaptionSyncEngine.swift in Sources */,
+				2115D5F97D82BA41DA8425AF /* CaptionView.swift in Sources */,
+				DBD5572DE4871B76E432ABEA /* ControlsView.swift in Sources */,
+				27748BED0BB779868D848236 /* DropboxFile.swift in Sources */,
+				E763DEF87E528E17DD9A987C /* DropboxService.swift in Sources */,
+				E9AD42AB200F2488D31D64A8 /* FileCache.swift in Sources */,
+				C14D7E899FDDE2387E2374AC /* LibraryView.swift in Sources */,
+				9245F3C31E1EA72BF37F2A7D /* OnboardingView.swift in Sources */,
+				6FBE1589ADF0715CBE89BC3B /* PlayerView.swift in Sources */,
+				5B14090BC0653A9A4B18A2DD /* RivieraAPIClient.swift in Sources */,
+				705AF14471A475B3DBC51AA7 /* SettingsView.swift in Sources */,
+				4A8A057AFA4071EE733C8379 /* StoryFolder.swift in Sources */,
+				6A00CB55B349F233A00E1C3D /* StoryRecord.swift in Sources */,
+				C8BA51E910062BD336FEB702 /* StoryRideApp.swift in Sources */,
+				DAD01712843E3237B329450C /* Theme.swift in Sources */,
+				3AD25D8E428456AE305B6D21 /* TranscriptSegment.swift in Sources */,
+				CBA2DBD2BE27DCDA1EABD206 /* TranscriptStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		03BA3CA933F507737C08AFA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		52A661D4F68506A07E99423F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6CF963D3D31EBEBE28305E5 /* Secrets.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DLNNTX72SB;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_KEY_DropboxAppKey = "$(DROPBOX_APP_KEY)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.janeyou.storyride;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		53AE476B6F18615DEC25AB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6CF963D3D31EBEBE28305E5 /* Secrets.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DLNNTX72SB;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_KEY_DropboxAppKey = "$(DROPBOX_APP_KEY)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.janeyou.storyride;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E95C8FEE1654FC65C8098F38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63C7499944F026F2A9C45A57 /* Build configuration list for PBXNativeTarget "StoryRide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52A661D4F68506A07E99423F /* Debug */,
+				53AE476B6F18615DEC25AB0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9BA95EB19A98E000AFEFF57C /* Build configuration list for PBXProject "StoryRide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03BA3CA933F507737C08AFA6 /* Debug */,
+				E95C8FEE1654FC65C8098F38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E5B72FB3FD8297B9B8DC730 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dropbox/SwiftyDropbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		675743947975872F1BBA5197 /* SwiftyDropbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E5B72FB3FD8297B9B8DC730 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */;
+			productName = SwiftyDropbox;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 8A679F57ECA6F2260E941E58 /* Project object */;
+}
