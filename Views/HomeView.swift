@@ -523,40 +523,115 @@ struct HomeView: View {
     // MARK: - Empty state
 
     private var emptyState: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 0) {
+            // Subtle warm wash so the welcome screen doesn't read as a blank slate
             Spacer()
-            Image(systemName: "music.note.list")
-                .font(.system(size: 80, weight: .ultraLight))
-                .foregroundColor(Theme.Color.inkFaint)
-            VStack(spacing: 6) {
-                Text("No playlists yet")
-                    .font(.system(size: 24, weight: .semibold, design: .rounded))
-                    .foregroundColor(Theme.Color.ink)
-                Text("Scan your Dropbox for audio, or add a folder by path.")
-                    .font(.system(size: 15, design: .rounded))
-                    .foregroundColor(Theme.Color.inkFaint)
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.horizontal, 32)
+
+            brandMark
+                .padding(.bottom, 28)
 
             VStack(spacing: 12) {
-                Button { showDiscover = true } label: {
-                    Text("Scan Dropbox")
-                        .font(.system(size: 17, weight: .semibold, design: .rounded))
-                        .foregroundColor(Theme.Color.accentFg)
-                        .frame(maxWidth: .infinity, minHeight: 56)
-                        .background(Theme.Color.accent)
-                        .clipShape(Capsule())
-                }
-                Button { showAddFolder = true } label: {
-                    Text("Add a folder")
-                        .font(.system(size: 14, weight: .medium, design: .rounded))
-                        .foregroundColor(Theme.Color.ink)
+                Text("StoryRide")
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
+                    .tracking(-0.5)
+                    .foregroundColor(Theme.Color.ink)
+
+                Text("Audio stories from your Dropbox, with read-along captions on screen. Built for kids in the car.")
+                    .font(.system(size: 15.5, design: .rounded))
+                    .foregroundColor(Theme.Color.inkSoft)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                    .padding(.horizontal, 28)
+            }
+
+            Spacer()
+
+            VStack(spacing: 10) {
+                Text("PICK A WAY TO ADD AUDIO")
+                    .font(.system(size: 11, weight: .bold, design: .rounded))
+                    .tracking(1.6)
+                    .foregroundColor(Theme.Color.inkFaint)
+
+                HStack(spacing: 12) {
+                    Button { showDiscover = true } label: {
+                        ctaTile(
+                            icon: "sparkle.magnifyingglass",
+                            label: "Scan Dropbox",
+                            sub: "find audio folders",
+                            primary: true
+                        )
+                    }
+                    .buttonStyle(.plain)
+
+                    Button { showAddFolder = true } label: {
+                        ctaTile(
+                            icon: "folder.badge.plus",
+                            label: "Add a folder",
+                            sub: "browse manually",
+                            primary: false
+                        )
+                    }
+                    .buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal, 32)
-            Spacer()
+            .padding(.horizontal, 20)
+            .padding(.bottom, 44)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            // Soft honey wash at the top so the screen feels intentional, not empty
+            LinearGradient(
+                stops: [
+                    .init(color: Theme.Color.accent.opacity(0.10), location: 0),
+                    .init(color: Theme.Color.bg, location: 0.45),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+        )
+    }
+
+    private var brandMark: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .fill(Theme.Color.accent)
+                .frame(width: 96, height: 96)
+                .shadow(color: Theme.Color.accent.opacity(0.40), radius: 24, x: 0, y: 14)
+
+            // Play triangle, optically nudged right of center
+            Image(systemName: "play.fill")
+                .font(.system(size: 38, weight: .bold))
+                .foregroundColor(Theme.Color.bg)
+                .offset(x: 3)
+        }
+    }
+
+    /// One of two equally-weighted CTA tiles on the welcome screen.
+    /// Same size, shape, structure. Primary uses an accent border (so the brand mark
+    /// stays the only solid block of honey); secondary uses a card surface.
+    private func ctaTile(icon: String, label: String, sub: String, primary: Bool) -> some View {
+        VStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 20, weight: .medium))
+            Text(label)
+                .font(.system(size: 15, weight: .semibold, design: .rounded))
+            Text(sub)
+                .font(.system(size: 11.5, design: .rounded))
+                .opacity(0.75)
+        }
+        .foregroundColor(primary ? Theme.Color.accent : Theme.Color.ink)
+        .frame(maxWidth: .infinity)
+        .frame(height: 116)
+        .background(primary ? Theme.Color.accent.opacity(0.08) : Theme.Color.card)
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(
+                    primary ? Theme.Color.accent.opacity(0.65) : Theme.Color.border,
+                    lineWidth: primary ? 1.5 : 1
+                )
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
     // MARK: - Helpers
