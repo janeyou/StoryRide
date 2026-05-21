@@ -17,6 +17,7 @@ struct PlayerView: View {
     @State private var isLoadingAudio = false
     @State private var isTranscribing = false
     @State private var errorMessage: String?
+    @State private var scrubPosition: TimeInterval?  // non-nil while user is dragging
 
     private let riviera = RivieraAPIClient()
 
@@ -97,6 +98,7 @@ struct PlayerView: View {
                         .padding(.top, 20)
 
                     captionPill
+                        .padding(.horizontal, 28)
                         .padding(.top, 24)
                         .padding(.bottom, 40)
                 }
@@ -145,7 +147,20 @@ struct PlayerView: View {
 
             Spacer()
 
-            Button { /* more */ } label: {
+            Menu {
+                Button {
+                    audioPlayer.seek(to: 0)
+                    if !audioPlayer.isPlaying { audioPlayer.play() }
+                } label: {
+                    Label("Restart from beginning", systemImage: "gobackward")
+                }
+                Button {
+                    captionsOpen.toggle()
+                } label: {
+                    Label(captionsOpen ? "Hide read-along" : "Show read-along",
+                          systemImage: "captions.bubble")
+                }
+            } label: {
                 Image(systemName: "ellipsis")
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(Theme.Color.ink)
@@ -159,19 +174,25 @@ struct PlayerView: View {
 
     @ViewBuilder
     private func surface(visual: PlaylistVisual) -> some View {
-        ZStack {
-            if captionsOpen {
-                captionPanel
-                    .transition(.opacity)
-            } else {
-                coverSurface(visual: visual)
-                    .transition(.opacity)
+        GeometryReader { proxy in
+            let side = min(proxy.size.width, 320)
+            HStack(spacing: 0) {
+                Spacer(minLength: 0)
+                ZStack {
+                    if captionsOpen {
+                        captionPanel
+                            .transition(.opacity)
+                    } else {
+                        coverSurface(visual: visual)
+                            .transition(.opacity)
+                    }
+                }
+                .animation(.easeInOut(duration: 0.2), value: captionsOpen)
+                .frame(width: side, height: side)
+                Spacer(minLength: 0)
             }
         }
-        .animation(.easeInOut(duration: 0.2), value: captionsOpen)
-        .frame(maxWidth: 320)
-        .aspectRatio(1, contentMode: .fit)
-        .frame(maxWidth: .infinity)
+        .frame(height: 320)
     }
 
     private func coverSurface(visual: PlaylistVisual) -> some View {
@@ -202,25 +223,43 @@ struct PlayerView: View {
                 .stroke(Color.white.opacity(0.10), lineWidth: 1)
 
             captionContent
-                .padding(24)
+                .padding(20)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.playerCover, style: .continuous))
     }
 
+    @ViewBuilder
     private var captionContent: some View {
-        Group {
-            if isTranscribing {
-                VStack(spacing: 12) {
-                    ProgressView().tint(Theme.Color.ink).scaleEffect(1.2)
-                    Text("Transcribing")
-                        .font(.system(size: 15, design: .rounded))
+        if isTranscribing {
+            VStack(spacing: 12) {
+                ProgressView().tint(Theme.Color.ink).scaleEffect(1.2)
+                Text("Transcribing…")
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .foregroundColor(Theme.Color.ink)
+                Text("First time only. We'll cache it for later.")
+                    .font(.system(size: 12.5, design: .rounded))
+                    .foregroundColor(Theme.Color.inkSoft)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.horizontal, 8)
+        } else if captionEngine.visibleWords.isEmpty {
+            VStack(spacing: 8) {
+                if isLoadingAudio {
+                    ProgressView().tint(Theme.Color.ink)
+                    Text("Loading audio…")
+                        .font(.system(size: 13, design: .rounded))
                         .foregroundColor(Theme.Color.inkSoft)
+                } else {
+                    Text("Waiting for playback")
+                        .font(.system(size: 13, design: .rounded))
+                        .foregroundColor(Theme.Color.inkFaint)
                 }
-            } else if captionEngine.visibleWords.isEmpty {
-                Text(isLoadingAudio ? "Loading…" : "No caption yet")
-                    .font(.system(size: 15, design: .rounded))
-                    .foregroundColor(Theme.Color.inkFaint)
-            } else {
+            }
+        } else {
+            ScrollView(showsIndicators: false) {
                 CaptionView(words: captionEngine.visibleWords)
+                    .frame(maxWidth: .infinity)
             }
         }
     }
@@ -247,19 +286,48 @@ struct PlayerView: View {
     private var progressBlock: some View {
         VStack(spacing: 7) {
             GeometryReader { proxy in
+                let isScrubbing = scrubPosition != nil
+                let shownTime = scrubPosition ?? audioPlayer.currentTime
+                let shownProgress = audioPlayer.duration > 0 ? shownTime / audioPlayer.duration : 0
+
                 ZStack(alignment: .leading) {
                     Capsule().fill(Color.white.opacity(0.15)).frame(height: 4)
                     Capsule()
                         .fill(Theme.Color.accent)
-                        .frame(width: proxy.size.width * progress, height: 4)
+                        .frame(width: proxy.size.width * shownProgress, height: 4)
+                    Circle()
+                        .fill(Theme.Color.accent)
+                        .frame(width: isScrubbing ? 14 : 10, height: isScrubbing ? 14 : 10)
+                        .shadow(color: Theme.Color.accent.opacity(0.45), radius: 6, x: 0, y: 0)
+                        .position(
+                            x: max(0, min(proxy.size.width, proxy.size.width * shownProgress)),
+                            y: 2
+                        )
+                        .animation(.easeOut(duration: 0.12), value: isScrubbing)
                 }
+                .frame(height: 32)
+                .contentShape(Rectangle())
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            guard audioPlayer.duration > 0 else { return }
+                            let pct = min(max(value.location.x / proxy.size.width, 0), 1)
+                            scrubPosition = pct * audioPlayer.duration
+                        }
+                        .onEnded { _ in
+                            if let pos = scrubPosition {
+                                audioPlayer.seek(to: pos)
+                            }
+                            scrubPosition = nil
+                        }
+                )
             }
-            .frame(height: 4)
+            .frame(height: 32)
 
             HStack {
-                Text(formatTime(audioPlayer.currentTime))
+                Text(formatTime(scrubPosition ?? audioPlayer.currentTime))
                 Spacer()
-                Text("-\(formatTime(max(audioPlayer.duration - audioPlayer.currentTime, 0)))")
+                Text("-\(formatTime(max(audioPlayer.duration - (scrubPosition ?? audioPlayer.currentTime), 0)))")
             }
             .font(.system(size: 12, design: .rounded))
             .foregroundColor(Theme.Color.ink.opacity(0.7))
@@ -307,16 +375,22 @@ struct PlayerView: View {
 
     private var captionPill: some View {
         Button { captionsOpen.toggle() } label: {
-            HStack(spacing: 8) {
+            HStack(spacing: 10) {
                 Image(systemName: "captions.bubble")
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.system(size: 18, weight: .semibold))
                 Text(captionsOpen ? "Hide read-along" : "Show read-along")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
             }
-            .foregroundColor(captionsOpen ? Theme.Color.accentFg : Theme.Color.ink)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(captionsOpen ? Theme.Color.accent : Color.white.opacity(0.08))
+            .foregroundColor(captionsOpen ? Theme.Color.accentFg : Theme.Color.accent)
+            .frame(maxWidth: .infinity)
+            .frame(height: 52)
+            .background(captionsOpen ? Theme.Color.accent : Theme.Color.accent.opacity(0.08))
+            .overlay(
+                Capsule().stroke(
+                    captionsOpen ? Color.clear : Theme.Color.accent.opacity(0.65),
+                    lineWidth: 1.5
+                )
+            )
             .clipShape(Capsule())
         }
         .buttonStyle(.plain)

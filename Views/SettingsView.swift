@@ -15,10 +15,10 @@ struct SettingsView: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 28) {
-                    aboutSection
+                    accountSection
                     playlistsSection
                     captionsSection
-                    accountSection
+                    aboutSection
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 24)

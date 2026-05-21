@@ -536,15 +536,16 @@ struct HomeView: View {
                     .tracking(-0.5)
                     .foregroundColor(Theme.Color.ink)
 
-                Text("Audio stories from your Dropbox, with read-along captions on screen. Built for kids in the car.")
+                Text("Stories & songs for the road.")
                     .font(.system(size: 15.5, design: .rounded))
                     .foregroundColor(Theme.Color.inkSoft)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(3)
-                    .padding(.horizontal, 28)
             }
 
             Spacer()
+
+            connectionPill
+                .padding(.bottom, 14)
 
             VStack(spacing: 10) {
                 Text("PICK A WAY TO ADD AUDIO")
@@ -590,6 +591,28 @@ struct HomeView: View {
             )
             .ignoresSafeArea()
         )
+    }
+
+    private var connectionPill: some View {
+        Button { openSettings = true } label: {
+            HStack(spacing: 8) {
+                Circle()
+                    .fill(Color.green)
+                    .frame(width: 6, height: 6)
+                Text("Connected to Dropbox")
+                    .font(.system(size: 12.5, weight: .semibold, design: .rounded))
+                    .foregroundColor(Theme.Color.inkSoft)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundColor(Theme.Color.inkFaint)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(Theme.Color.card.opacity(0.7))
+            .overlay(Capsule().stroke(Theme.Color.border, lineWidth: 1))
+            .clipShape(Capsule())
+        }
+        .buttonStyle(.plain)
     }
 
     private var brandMark: some View {
